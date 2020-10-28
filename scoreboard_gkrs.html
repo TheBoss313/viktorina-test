@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scores</title>
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+    table, td, th {
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Score</th>
+</tr>
+{% for k, v in players.items() %}
+    <tr>
+    <td>{{ k|title }}</td>
+    <td>{{ v }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+</head>
+<body>
+<form action="" method="post">
+    <p>
+    <label for="name">Name:</label>
+    <select name="name" id="name">
+        {% for k, v in players.items() %}
+        <option value="{{ k }}">{{ k|title }}</option>
+        {% endfor %}
+    </select>
+        <label for="pts">Points</label>
+        <input type="text" name="pts">
+    <input type="submit">
+    </p>
+</form>
+</body>
+</html>
