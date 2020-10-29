@@ -20,7 +20,7 @@ def check(a, b):
 
 @app.route('/')
 def main_page():
-    return render_template(r'templates/index_gkrs.html', questions=questions, qt=qt_dict, check=check)
+    return render_template(r'index_gkrs.html', questions=questions, qt=qt_dict, check=check)
 
 
 @app.route('/<int:qt>:<int:pts>/')
@@ -28,12 +28,12 @@ def question(qt, pts):
     qt1 = qt_dict[f'{qt}']
     quest = questions[qt][str(pts)]
     del questions[qt][str(pts)]
-    return render_template(r'templates/question_gkrs.html', qt=qt1, pts=pts, q=quest)
+    return render_template(r'question_gkrs.html', qt=qt1, pts=pts, q=quest)
 
 
 @app.route('/scores/')
 def scores():
-    return render_template(r'remplates/scoreboard_gkrs.html', players=players)
+    return render_template(r'scoreboard_gkrs.html', players=players)
 
 
 @app.route('/admin/', methods=['get', 'post'])
@@ -42,7 +42,7 @@ def admin():
         name = request.form.get('name')
         pts = request.form.get('pts')
         players[name] = int(pts)
-    return render_template(r'templates/admin_gkrs.html', players=players)
+    return render_template(r'admin_gkrs.html', players=players)
 
 
 if __name__ == '__main__':
