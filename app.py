@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
+import os
 
 app = Flask(__name__, template_folder='templates')
 questions = [{'100': '100', '200': '200', '300': '300', '400': '400'},
@@ -45,4 +46,5 @@ def admin():
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
