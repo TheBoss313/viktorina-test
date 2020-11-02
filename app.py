@@ -1,7 +1,9 @@
 from flask import Flask, render_template, redirect, url_for, request, session
+from config import Config
 import os
 
 app = Flask(__name__, template_folder='templates')
+app.config.from_object(Config)
 questions = [{'100': '100', '200': '200', '300': '300', '400': '400'},
              {'100': '100', '200': '200', '300': '300', '400': '400'},
              {'100': '100', '200': '200', '300': '300', '400': '400', '500': '500'}]
