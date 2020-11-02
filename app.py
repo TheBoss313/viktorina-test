@@ -20,6 +20,11 @@ def check(a, b):
         return questions[a]
 
 
+@app.before_first_request
+def clear():
+    session.clear() # Clears sessions
+
+
 @app.route('/')
 def main_page():
     if 'logged_in' in session and session['logged_in'] == 'true': 
