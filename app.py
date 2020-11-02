@@ -51,7 +51,7 @@ def admin():
 @app.route('/login/', methods=['get','post'])
 def login(message = ''):
     if request.method == 'POST':
-        name = request.form.get('password')
+        password = request.form.get('password')
         if password == 'gkrs2020':
             session['logged_in'] = 'true'
             return redirect(url_for('main_page'))
