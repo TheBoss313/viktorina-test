@@ -23,7 +23,7 @@ def main_page():
     if 'logged_in' in session and session['logged_in'] == 'true': 
         return render_template(r'index_gkrs.html', questions=questions, qt=qt_dict, check=check)
     else:
-        return redirect('login')
+        return redirect(url_for('login'))
 
 
 @app.route('/<int:qt>:<int:pts>/')
@@ -57,6 +57,8 @@ def login(message = ''):
             return redirect(url_for('main_page'))
         else:
             return render_template('login.html', message='WRONG PASSWORD')
+    else:
+        return render_template('login.html')
 
 
 if __name__ == '__main__':
