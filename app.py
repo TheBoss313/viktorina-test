@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, session
 import os
 
 app = Flask(__name__, template_folder='templates')
@@ -20,7 +20,10 @@ def check(a, b):
 
 @app.route('/')
 def main_page():
-    return render_template(r'index_gkrs.html', questions=questions, qt=qt_dict, check=check)
+    if 'logged_in' in session and session['logged_in'] == 'true': 
+        return render_template(r'index_gkrs.html', questions=questions, qt=qt_dict, check=check)
+    else:
+        return redirect('login')
 
 
 @app.route('/<int:qt>:<int:pts>/')
@@ -43,6 +46,17 @@ def admin():
         pts = request.form.get('pts')
         players[name] = int(pts)
     return render_template(r'admin_gkrs.html', players=players)
+
+
+@app.route('/login/', methods=['get','post'])
+def login(message = ''):
+    if request.method == 'POST':
+        name = request.form.get('password')
+        if password == 'gkrs2020':
+            session['logged_in'] = 'true'
+            return redirect(url_for('main_page'))
+        else:
+            return render_template('login.html', message='WRONG PASSWORD')
 
 
 if __name__ == '__main__':
