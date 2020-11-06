@@ -4,6 +4,10 @@ import os
 
 app = Flask(__name__, template_folder='templates')
 app.config.from_object(Config)
+questions_base = [{'100': '100', '200': '200', '300': '300', '400': '400'},
+             {'100': '100', '200': '200', '300': '300', '400': '400'},
+             {'100': '100', '200': '200', '300': '300', '400': '400', '500': '500'}]
+
 questions = [{'100': '100', '200': '200', '300': '300', '400': '400'},
              {'100': '100', '200': '200', '300': '300', '400': '400'},
              {'100': '100', '200': '200', '300': '300', '400': '400', '500': '500'}]
@@ -23,6 +27,7 @@ def check(a, b):
 @app.before_first_request
 def clear():
     session.clear() # Clears sessions
+    questions = questions_base.copy()
 
 
 @app.route('/')
@@ -67,6 +72,18 @@ def login(message = ''):
     else:
         return render_template('login.html')
 
+@app.route('/reset/', methods=['get','post'])
+def login(message = ''):
+    global questions, questions_base
+    if request.method == 'POST':
+        password = request.form.get('password')
+        if password == 'gkrs2006':
+            questions = questions_base.copy()
+            return redirect(url_for('main_page'))
+        else:
+            return render_template('reload.html', message='WRONG PASSWORD')
+    else:
+        return render_template('reload.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
