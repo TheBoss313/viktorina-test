@@ -61,7 +61,7 @@ def admin():
 
 
 @app.route('/login/', methods=['get','post'])
-def reset(message = ''):
+def login(message = ''):
     if request.method == 'POST':
         password = request.form.get('password')
         if password == 'gkrs2020':
@@ -73,7 +73,7 @@ def reset(message = ''):
         return render_template('login.html')
 
 @app.route('/reset/', methods=['get','post'])
-def login(message = ''):
+def reset(message = ''):
     global questions, questions_base
     if request.method == 'POST':
         password = request.form.get('password')
