@@ -61,7 +61,7 @@ def admin():
 
 
 @app.route('/login/', methods=['get','post'])
-def login(message = ''):
+def reset(message = ''):
     if request.method == 'POST':
         password = request.form.get('password')
         if password == 'gkrs2020':
