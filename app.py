@@ -8,12 +8,10 @@ questions_base = [{'100': '100', '200': '200', '300': '300', '400': '400'},
              {'100': '100', '200': '200', '300': '300', '400': '400'},
              {'100': '100', '200': '200', '300': '300', '400': '400', '500': '500'}]
 
-questions = [{'100': '100', '200': '200', '300': '300', '400': '400'},
-             {'100': '100', '200': '200', '300': '300', '400': '400'},
-             {'100': '100', '200': '200', '300': '300', '400': '400', '500': '500'}]
+questions = questions_base.copy()
 qt_dict = {'0': 'question type 1', '1': 'question type 2', '2': 'Question type 3'}
-players = {'Name1': 0, 'Name2': 0, 'Name4': 0, 'Name5': 0}
-
+players_base = {'Name1': 0, 'Name2': 0, 'Name4': 0, 'Name5': 0}
+players = players_base.copy()
 
 def check(a, b):
     try:
@@ -79,6 +77,7 @@ def reset(message = ''):
         password = request.form.get('password')
         if password == 'gkrs2006':
             questions = questions_base.copy()
+            players = players_base.copy()
             return redirect(url_for('main_page'))
         else:
             return render_template('reload.html', message='WRONG PASSWORD')
