@@ -102,7 +102,7 @@ def upload(message = ''):
     global questions, questions_base
     if request.method == 'POST':
         file = request.form.get('file')
-        text = file.data()
+        text = file
         # questions = questions_base.copy()
         # players = players_base.copy()
         return render_template('upload.html', message=text)
