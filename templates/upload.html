@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form action="" method="post">
+    <p>
+    <label for="file">File:</label>
+    <input type="file" name="file">
+    <input type="submit">
+    </p>
+</form>
+{% if message %}
+    <p style="colour: red;"> {{ message }}</p>
+{% endif %}
+</body>
+</html>
