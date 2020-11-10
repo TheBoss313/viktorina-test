@@ -43,7 +43,7 @@ def clear():
 @app.route('/')
 def main_page():
     if 'logged_in' in session and session['logged_in'] == 'true': 
-        return render_template(r'index_gkrs.html', questions=questions, qt=qt_dict, check=check)
+        return render_template(r'index_gkrs.html', questions=questions, qt=qt_dict, check=check, players=players)
     else:
         return redirect(url_for('login'))
 
