@@ -30,5 +30,18 @@
     </tr>
     {% endfor %}
 </table>
+<hr>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Score</th>
+</tr>
+{% for k, v in players.items() %}
+    <tr>
+    <td>{{ k|title }}</td>
+    <td>{{ v }}</td>
+    </tr>
+{% endfor %}
+</table>
 </body>
 </html>
