@@ -8,6 +8,12 @@
             color: black;
             text-decoration: none;
         }
+        .table {
+        border-collapse: collapse;
+    }
+        .table1, .td, .th {
+        border: 1px solid black;
+    }
     </style>
 </head>
 <body>
@@ -31,15 +37,15 @@
     {% endfor %}
 </table>
 <hr>
-<table>
+<table class="table table1">
 <tr>
-    <th>Name</th>
-    <th>Score</th>
+    <th class="th">Name</th>
+    <th class="th">Score</th>
 </tr>
 {% for k, v in players.items() %}
     <tr>
-    <td>{{ k|title }}</td>
-    <td>{{ v }}</td>
+    <td class="td">{{ k|title }}</td>
+    <td class="td">{{ v }}</td>
     </tr>
 {% endfor %}
 </table>
