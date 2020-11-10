@@ -21,14 +21,14 @@
 <table>
     <tr>
         {% for i in range(qt|length) %}
-        <th>{{ qt[i|string]|title }}</th>
+        <th style="text-alignment=center;">{{ qt[i|string]|title }}</th>
         {% endfor %}
     </tr>
     {% for i in range(10) %}
     <tr>
         {% for j in range(qt|length) %}
             {% if check(a=j, b=(100*(i+1))|string) != None %}
-            <td><a href="{{ url_for('question', qt=j, pts=(100*(i+1))|string) }}" class="link">{{ 100*(i+1) }}</a></td>
+            <td style="text-alignment=center;"><a href="{{ url_for('question', qt=j, pts=(100*(i+1))|string) }}" class="link">{{ 100*(i+1) }}</a></td>
             {% else %}
             <td></td>
             {% endif %}
