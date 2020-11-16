@@ -66,7 +66,7 @@ def admin():
     if request.method == 'POST':
         name = request.form.get('name')
         pts = request.form.get('pts')
-        players[name] = int(pts)
+        players[name] = players[name] + int(pts)
     return render_template(r'admin_gkrs.html', players=players)
 
 
