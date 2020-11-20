@@ -96,6 +96,20 @@ def reset(message = ''):
     else:
         return render_template('reload.html')
 
+
+@app.route('/upload/', methods=['get','post'])
+def upload(message = ''):
+    global questions, questions_base
+    if request.method == 'POST':
+        file = request.form.get('file')
+        text = file
+        # questions = questions_base.copy()
+        # players = players_base.copy()
+        return render_template('upload.html', message=text)
+    else:
+        return render_template('upload.html')
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
